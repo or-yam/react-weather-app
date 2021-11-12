@@ -40,7 +40,7 @@ export default function Weather() {
       setIsLoading(true);
       await Promise.all([
         dispatch(getCurrentWeather(locationKey)),
-        dispatch(getForecast(locationKey, isMetric))
+        dispatch(getForecast({ locationKey, isMetric }))
       ]);
       setIsLoading(false);
     })();

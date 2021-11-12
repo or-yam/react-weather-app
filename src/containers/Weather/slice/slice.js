@@ -18,7 +18,7 @@ export const getCurrentWeather = createAsyncThunk(
 
 export const getForecast = createAsyncThunk(
   `${SLICE_KEY}/forecast`,
-  (locationKey, isMetric = true) => api.fetchForecast(locationKey, isMetric)
+  ({ locationKey, isMetric }) => api.fetchForecast(locationKey, isMetric)
 );
 
 const setForecast = (state, { payload: forecast }) => {
