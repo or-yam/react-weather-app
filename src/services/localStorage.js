@@ -6,7 +6,7 @@ export const saveToFavorites = (data) => {
 
 export const getFavorites = () => {
   const results = localStorage.getItem(`${STORAGE_NAME}_FAVORITES`);
-  if (!results) return null;
+  if (!results) return false;
   console.info('favorites restored from local storage');
   return JSON.parse(results);
 };
@@ -17,7 +17,7 @@ export const saveSettings = (data) => {
 
 export const getSettings = () => {
   const results = localStorage.getItem(`${STORAGE_NAME}_SETTINGS`);
-  if (!results) return null;
+  if (!results) return false;
   console.info('settings restored from local storage');
   return JSON.parse(results);
 };
