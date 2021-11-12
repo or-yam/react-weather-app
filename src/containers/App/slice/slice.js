@@ -8,7 +8,8 @@ export const SLICE_KEY = 'app';
 export const initialState = {
   userLocation: {},
   isMetric: true,
-  isDarkTheme: false
+  isDarkTheme: false,
+  errorMessage: null
 };
 
 export const getUserCity = createAsyncThunk(
@@ -17,11 +18,13 @@ export const getUserCity = createAsyncThunk(
 );
 
 const setUserCity = (state, { payload }) => {
-  state.userLocation = {
-    ...state.userLocation,
-    key: payload.Key,
-    cityName: payload.LocalizedName
-  };
+  payload.error
+    ? (state.errorMessage = payload.error)
+    : (state.userLocation = {
+        ...state.userLocation,
+        key: payload.Key,
+        cityName: payload.LocalizedName
+      });
 };
 
 const slice = createSlice({
@@ -41,6 +44,7 @@ const slice = createSlice({
     },
     getSettingsFromLocalStorage: (state) => {
       const settings = getSettings();
+      if (!settings) return;
       state.isMetric = settings.isMetric;
       state.isDarkTheme = settings.isDarkTheme;
     }

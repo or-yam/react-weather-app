@@ -17,3 +17,8 @@ export const selectUnitSystem = createSelector(
   selectAppState,
   ({ isMetric }) => isMetric
 );
+
+export const selectUserLocationError = createSelector(
+  selectAppState,
+  ({ errorMessage }) => errorMessage
+);

@@ -5,7 +5,8 @@ import * as api from '../../../services/api';
 export const SLICE_KEY = 'autoComplete';
 
 export const initialState = {
-  autoCompleteResults: []
+  autoCompleteResults: [],
+  errorMessage: null
 };
 
 export const getAutoCompleteCitiesList = createAsyncThunk(
@@ -14,17 +15,19 @@ export const getAutoCompleteCitiesList = createAsyncThunk(
 );
 
 const setAutoCompleteResults = (state, { payload: results }) => {
-  state.autoCompleteResults = results.map(
-    ({
-      Key: key,
-      LocalizedName: cityName,
-      Country: { LocalizedName: countryName }
-    }) => ({
-      key,
-      cityName,
-      countryName
-    })
-  );
+  results.error
+    ? (state.errorMessage = results.error)
+    : (state.autoCompleteResults = results.map(
+        ({
+          Key: key,
+          LocalizedName: cityName,
+          Country: { LocalizedName: countryName }
+        }) => ({
+          key,
+          cityName,
+          countryName
+        })
+      ));
 };
 
 const slice = createSlice({

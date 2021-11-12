@@ -4,17 +4,20 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import styles from './Search.module.css';
 import { getAutoCompleteCitiesList } from './slice/slice';
-import { selectAutoCompleteCitiesList } from './slice/selectors';
+import {
+  selectAutoCompleteCitiesList,
+  selectAutoCompleteError
+} from './slice/selectors';
 import { setLocation } from '../../containers/Weather/slice/slice';
 import { selectTheme } from '../../containers/App/slice/selectors';
 
 export default function Search() {
+  // TODO use local state instead of redux
   const dispatch = useDispatch();
   const [input, setInput] = useState('');
-  // TODO use local state instead of redux
-
   const isDarkTheme = useSelector(selectTheme);
   const autoCompleteCitiesList = useSelector(selectAutoCompleteCitiesList);
+  const error = useSelector(selectAutoCompleteError);
 
   const setCurrentLocation = (event, { cityName, key }) => {
     key && dispatch(setLocation({ cityName, key }));
@@ -38,17 +41,21 @@ export default function Search() {
       getOptionLabel={({ cityName, countryName }) =>
         cityName ? `${cityName} ${countryName}` : ''
       }
-      renderInput={(params) => (
-        <TextField
-          onClick={() => {}}
-          {...params}
-          label="Search input"
-          InputProps={{
-            ...params.InputProps,
-            type: 'search'
-          }}
-        />
-      )}
+      renderInput={(params) =>
+        error ? (
+          <TextField {...params} error={error} label={error} />
+        ) : (
+          <TextField
+            onClick={() => {}}
+            {...params}
+            label="Search input"
+            InputProps={{
+              ...params.InputProps,
+              type: 'search'
+            }}
+          />
+        )
+      }
     />
   );
 }

@@ -10,25 +10,28 @@ import { getCurrentWeather, getForecast, setLocation } from './slice/slice';
 import {
   selectCurrentWeather,
   selectForecast,
-  selectLocation
+  selectLocation,
+  selectWeatherError
 } from './slice/selectors';
 import { selectFavorites } from '../Favorites/slice/selectors';
 import { actions } from '../Favorites/slice/slice';
 import { selectUnitSystem } from '../App/slice/selectors';
 import useGeolocation from '../../services/useGeolocation';
+import ErrorModal from '../../components/ErrorModal/ErrorModal';
 import styles from './Weather.module.css';
 
 const ICON_BASE_URL = 'https://www.accuweather.com/images/weathericons/';
 
 export default function Weather() {
   const [isLoading, setIsLoading] = useState(false);
+  const error = useSelector(selectWeatherError);
   const dispatch = useDispatch();
   const { text, temp, iconCode } = useSelector(selectCurrentWeather);
   const { key: locationKey, cityName } = useSelector(selectLocation);
   const forecast = useSelector(selectForecast);
   const favorites = useSelector(selectFavorites);
   const isMetric = useSelector(selectUnitSystem);
-  const { userLocation, getLocation } = useGeolocation();
+  const { userLocation, getLocation, userLocationError } = useGeolocation();
 
   const isFavorite = !!favorites.find((fav) => fav.key === locationKey);
 
@@ -41,7 +44,7 @@ export default function Weather() {
       ]);
       setIsLoading(false);
     })();
-  }, [locationKey]);
+  }, [locationKey, isMetric]);
 
   const toggleFavorite = () => {
     dispatch(actions.toggleFavorite({ key: locationKey, cityName }));
@@ -61,16 +64,20 @@ export default function Weather() {
       </div>
     );
 
+  if (error) {
+    return <ErrorModal errorMessage={error} />;
+  }
+
   return (
     <section className={styles.container}>
       <Search />
-
       <Button
         variant="outlined"
+        color={userLocationError ? 'error' : 'primary'}
         startIcon={<LocationOnIcon />}
         onClick={setUserLocationWeather}
       >
-        Get Location Weather
+        {userLocationError || 'Get Location Weather'}
       </Button>
       <CurrentWeatherCard
         name={cityName}

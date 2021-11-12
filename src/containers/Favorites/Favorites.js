@@ -55,6 +55,7 @@ export default function Favorites() {
                   removeCity={removeCity}
                   setCurrentLocation={setCurrentLocation}
                   isMetric={isMetric}
+                  errorMessage={weather.errorMessage}
                 />
               )
           )}

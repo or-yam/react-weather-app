@@ -17,3 +17,8 @@ export const selectLocation = createSelector(
   selectWeatherState,
   ({ location }) => location || {}
 );
+
+export const selectWeatherError = createSelector(
+  selectWeatherState,
+  ({ errorMessage }) => errorMessage
+);

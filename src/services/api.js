@@ -19,27 +19,40 @@ const makeRequest = async (method, endpoint, params) => {
   try {
     return (await axios[method](`/${endpoint}`, { params })).data;
   } catch (error) {
-    console.warn(error);
-    return null;
+    return { error: error.message };
   }
 };
-
 export const fetchCurrentWeather = async (locationKey) => {
-  const [data] = makeRequest(
+  const data = await makeRequest(
     'get',
     `${CURRENT_WEATHER_ENDPOINT}${locationKey}`
   );
 
-  return { ...data, key: locationKey };
+  return data.error
+    ? { error: data.error, key: locationKey }
+    : { ...data[0], key: locationKey };
+
+  // mock data
+  // const [data] = weatherData;
+  // return { ...data, key: locationKey };
 };
 
 export const fetchForecast = (locationKey, isMetric = true) =>
   makeRequest('get', `${FIVE_DAYS_ENDPOINT}${locationKey}`, {
-    metric: isMetric
+    metric: isMetric ? 'true' : 'false'
   });
+
+// mock data
+// forecastData;
 
 export const fetchAutoCompleteCitiesList = (query) =>
   makeRequest('get', AUTOCOMPLETE_ENDPOINT, { q: query });
 
+// mock data
+// autoCompleteData;
+
 export const fetchGeoLocation = ({ lat, lon }) =>
   makeRequest('get', GEO_LOCATION_ENDPOINT, { q: `${lat},${lon}` });
+
+// mock data
+// geoLocationData;

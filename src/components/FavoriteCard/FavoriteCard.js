@@ -14,7 +14,8 @@ export default function FavoriteCard({
   name,
   removeCity,
   setCurrentLocation,
-  isMetric
+  isMetric,
+  errorMessage
 }) {
   const isDarkTheme = useSelector(selectTheme);
 
@@ -25,7 +26,6 @@ export default function FavoriteCard({
   const onRemove = () => {
     removeCity({ key: cityKey });
   };
-
   return (
     <li className={`${styles.container} ${isDarkTheme ? styles.dark : ''}`}>
       <div className={styles.cityContainer}>
@@ -40,13 +40,25 @@ export default function FavoriteCard({
         </IconButton>
       </div>
       <button type="button" onClick={selectCity}>
-        <h2 className={styles.title}>{text}</h2>
-        <div className={styles.infoContainer}>
-          <img className={styles.weatherIcon} src={icon.src} alt={icon.alt} />
-          <p className={styles.temp}>
-            {temp} {isMetric ? <span>&#8451;</span> : <span>&#8457;</span>}
-          </p>
-        </div>
+        {errorMessage ? (
+          <h2 className={styles.errorMessage}>
+            Can not display weather, {errorMessage}
+          </h2>
+        ) : (
+          <>
+            <h2 className={styles.title}>{text}</h2>
+            <div className={styles.infoContainer}>
+              <img
+                className={styles.weatherIcon}
+                src={icon.src}
+                alt={icon.alt}
+              />
+              <p className={styles.temp}>
+                {temp} {isMetric ? <span>&#8451;</span> : <span>&#8457;</span>}
+              </p>
+            </div>
+          </>
+        )}
       </button>
     </li>
   );
@@ -61,11 +73,13 @@ FavoriteCard.propTypes = {
   temp: PropTypes.number,
   icon: PropTypes.shape({ src: PropTypes.string, alt: PropTypes.string }),
   setCurrentLocation: PropTypes.func.isRequired,
-  isMetric: PropTypes.bool.isRequired
+  isMetric: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string
 };
 
 FavoriteCard.defaultProps = {
   text: '',
   temp: 0,
-  icon: { src: '', alt: '' }
+  icon: { src: '', alt: '' },
+  errorMessage: ''
 };

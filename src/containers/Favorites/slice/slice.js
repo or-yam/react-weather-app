@@ -23,7 +23,12 @@ export const getFavoritesWeather = createAsyncThunk(
 const setFavoritesWeather = (state, { payload }) => {
   state.favoritesLocations = state.favoritesLocations.map((location) => {
     const [weather] = payload.filter(({ key }) => key === location.key);
-    if (!weather) return location;
+    if (!weather) {
+      return location;
+    }
+    if (weather.error) {
+      return { ...location, weather: { errorMessage: weather.error } };
+    }
     return {
       ...location,
       weather: {
