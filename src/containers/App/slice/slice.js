@@ -9,7 +9,7 @@ export const initialState = {
   userLocation: {},
   isMetric: true,
   isDarkTheme: false,
-  errorMessage: null
+  errorMessage: false
 };
 
 export const getUserCity = createAsyncThunk(
