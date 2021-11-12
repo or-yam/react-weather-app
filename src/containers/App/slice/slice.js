@@ -45,8 +45,8 @@ const slice = createSlice({
     getSettingsFromLocalStorage: (state) => {
       const settings = getSettings();
       if (!settings) return;
-      state.isMetric = settings.isMetric;
-      state.isDarkTheme = settings.isDarkTheme;
+      state.isMetric = settings?.isMetric || state.isMetric;
+      state.isDarkTheme = settings?.isDarkTheme || state.isDarkTheme;
     }
   },
   extraReducers: {
