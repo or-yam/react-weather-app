@@ -1,0 +1,9 @@
+.app {
+  width: 100%;
+  height: 100vmax;
+}
+
+.dark {
+  background-color: #18191a;
+  color: #fff;
+}

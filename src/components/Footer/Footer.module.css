@@ -1,0 +1,13 @@
+.footer {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.dark {
+  background-color: #18191a;
+  color: #fff;
+}
