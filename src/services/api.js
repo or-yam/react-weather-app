@@ -1,8 +1,8 @@
 import axios from 'axios';
-import weatherData from '../moc-data/currentconditions.json';
-import forecastData from '../moc-data/5day.json';
-import autoCompleteData from '../moc-data/autocomplete.json';
-import geoLocationData from '../moc-data/geopositionsearch.json';
+// import weatherData from '../moc-data/currentconditions.json';
+// import forecastData from '../moc-data/5day.json';
+// import autoCompleteData from '../moc-data/autocomplete.json';
+// import geoLocationData from '../moc-data/geopositionsearch.json';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const API_KEY = process.env.REACT_APP_API_API_KEY;
@@ -25,21 +25,21 @@ const makeRequest = async (method, endpoint, params) => {
 };
 
 export const fetchCurrentWeather = async (locationKey) => {
-  // const [data] = makeRequest(
-  //   'get',
-  //   `${CURRENT_WEATHER_ENDPOINT}${locationKey}`
-  // );
-  const [data] = weatherData;
+  const [data] = makeRequest(
+    'get',
+    `${CURRENT_WEATHER_ENDPOINT}${locationKey}`
+  );
+
   return { ...data, key: locationKey };
 };
 
-export const fetchForecast = (locationKey, isMetric = true) => forecastData;
-// makeRequest('get', `${FIVE_DAYS_ENDPOINT}${locationKey}`, {
-//   metric: isMetric
-// });
+export const fetchForecast = (locationKey, isMetric = true) =>
+  makeRequest('get', `${FIVE_DAYS_ENDPOINT}${locationKey}`, {
+    metric: isMetric
+  });
 
-export const fetchAutoCompleteCitiesList = (query) => autoCompleteData;
-// makeRequest('get', AUTOCOMPLETE_ENDPOINT, { q: query });
+export const fetchAutoCompleteCitiesList = (query) =>
+  makeRequest('get', AUTOCOMPLETE_ENDPOINT, { q: query });
 
-export const fetchGeoLocation = ({ lat, lon }) => geoLocationData;
-// makeRequest('get', GEO_LOCATION_ENDPOINT, { q: `${lat},${lon}` });
+export const fetchGeoLocation = ({ lat, lon }) =>
+  makeRequest('get', GEO_LOCATION_ENDPOINT, { q: `${lat},${lon}` });
