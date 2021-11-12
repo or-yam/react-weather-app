@@ -1,0 +1,152 @@
+[
+    {
+        "Version": 1,
+        "Key": "129237",
+        "Type": "City",
+        "Rank": 30,
+        "LocalizedName": "Asmara",
+        "Country": {
+            "ID": "ER",
+            "LocalizedName": "Eritrea"
+        },
+        "AdministrativeArea": {
+            "ID": "MA",
+            "LocalizedName": "Maekel"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "257012",
+        "Type": "City",
+        "Rank": 30,
+        "LocalizedName": "Asuncion",
+        "Country": {
+            "ID": "PY",
+            "LocalizedName": "Paraguay"
+        },
+        "AdministrativeArea": {
+            "ID": "ASU",
+            "LocalizedName": "Asunción"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "317036",
+        "Type": "City",
+        "Rank": 30,
+        "LocalizedName": "Ashgabat",
+        "Country": {
+            "ID": "TM",
+            "LocalizedName": "Turkmenistan"
+        },
+        "AdministrativeArea": {
+            "ID": "S",
+            "LocalizedName": "Ashgabat"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "127376",
+        "Type": "City",
+        "Rank": 31,
+        "LocalizedName": "Asyut",
+        "Country": {
+            "ID": "EG",
+            "LocalizedName": "Egypt"
+        },
+        "AdministrativeArea": {
+            "ID": "AST",
+            "LocalizedName": "Asyut"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "292110",
+        "Type": "City",
+        "Rank": 31,
+        "LocalizedName": "Astrakhan",
+        "Country": {
+            "ID": "RU",
+            "LocalizedName": "Russia"
+        },
+        "AdministrativeArea": {
+            "ID": "AST",
+            "LocalizedName": "Astrakhan'"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "191570",
+        "Type": "City",
+        "Rank": 35,
+        "LocalizedName": "Asansol",
+        "Country": {
+            "ID": "IN",
+            "LocalizedName": "India"
+        },
+        "AdministrativeArea": {
+            "ID": "WB",
+            "LocalizedName": "West Bengal"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "223986",
+        "Type": "City",
+        "Rank": 35,
+        "LocalizedName": "Asahikawa-shi",
+        "Country": {
+            "ID": "JP",
+            "LocalizedName": "Japan"
+        },
+        "AdministrativeArea": {
+            "ID": "01",
+            "LocalizedName": "Hokkaido"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "218550",
+        "Type": "City",
+        "Rank": 35,
+        "LocalizedName": "Asahi-ku",
+        "Country": {
+            "ID": "JP",
+            "LocalizedName": "Japan"
+        },
+        "AdministrativeArea": {
+            "ID": "14",
+            "LocalizedName": "Kanagawa"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "127358",
+        "Type": "City",
+        "Rank": 41,
+        "LocalizedName": "Aswan",
+        "Country": {
+            "ID": "EG",
+            "LocalizedName": "Egypt"
+        },
+        "AdministrativeArea": {
+            "ID": "ASN",
+            "LocalizedName": "Aswan"
+        }
+    },
+    {
+        "Version": 1,
+        "Key": "311952",
+        "Type": "City",
+        "Rank": 41,
+        "LocalizedName": "As-Suwayda",
+        "Country": {
+            "ID": "SY",
+            "LocalizedName": "Syria"
+        },
+        "AdministrativeArea": {
+            "ID": "SU",
+            "LocalizedName": "As-Suwayda"
+        }
+    }
+]
