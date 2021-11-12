@@ -1,11 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserLocation, getUserCity } from '../containers/App/slice/slice';
-import { selectUserLocation } from '../containers/App/slice/selectors';
+import {
+  selectUserLocation,
+  selectUserLocationError
+} from '../containers/App/slice/selectors';
 
 export default () => {
   const dispatch = useDispatch();
   const userLocation = useSelector(selectUserLocation);
+  const userLocationError = useSelector(selectUserLocationError);
 
   const success = ({ coords }) => {
     const { latitude: lat, longitude: lon } = coords;
@@ -27,8 +31,10 @@ export default () => {
   };
 
   React.useEffect(() => {
-    userLocation && dispatch(getUserCity(userLocation));
+    if (userLocation.lat && userLocation.lon) {
+      dispatch(getUserCity(userLocation));
+    }
   }, [userLocation.lat]);
 
-  return { userLocation, getLocation };
+  return { userLocation, getLocation, userLocationError };
 };

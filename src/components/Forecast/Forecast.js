@@ -8,7 +8,9 @@ export default function Forecast({ forecast, iconBaseUrl }) {
   const isDarkTheme = useSelector(selectTheme);
   const { forecastDays, headLine } = forecast;
   const { isMetric } = forecastDays[0].temp;
+
   const weekDay = (date) => new Date(date).toDateString().split(' ')[0];
+
   const renderUnits = () =>
     isMetric ? <span>&#8451;</span> : <span>&#8457;</span>;
 
