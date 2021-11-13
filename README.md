@@ -4,6 +4,16 @@
 
 ## Repo [Link](https://bitbucket.org/oryamne/weather-app/src/main/)
 
+## Capabilities
+
+- Autocomplete cities search (English only) 🗺️
+- Display current weather ☁️
+- Display 5 days forecast 🔭
+- Display weather and forecast by user location 🧭
+- Save / remove locations to favorites list (to local-storage) 💾
+- Light & dark themes 🌓
+- Metric / Imperial units 📏
+
 ## Running the app locally
 
 ### Prerequisites
@@ -49,4 +59,5 @@ export const fetchGeoLocation = ({ lat, lon }) =>
 
 ## Planing schema
 
-![Planing Schema ](./palning-schema.png)
+![Planing Schema](./palning-schema.png)
+made using [excalidraw](https://excalidraw.com/)
