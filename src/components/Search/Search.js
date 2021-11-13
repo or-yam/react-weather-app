@@ -11,6 +11,8 @@ import {
 import { setLocation } from '../../containers/Weather/slice/slice';
 import { selectTheme } from '../../containers/App/slice/selectors';
 
+const DEBOUNCE_TIME = 600;
+
 export default function Search() {
   // TODO use local state instead of redux
   const dispatch = useDispatch();
@@ -27,8 +29,13 @@ export default function Search() {
     event?.target.value && setInput(event.target.value);
   };
 
+  // debounce
   useEffect(() => {
-    input && dispatch(getAutoCompleteCitiesList(input));
+    const timer = setTimeout(() => {
+      input && dispatch(getAutoCompleteCitiesList(input));
+    }, DEBOUNCE_TIME);
+    
+    return () => clearTimeout(timer);
   }, [input]);
 
   return (
