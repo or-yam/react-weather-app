@@ -23,15 +23,15 @@ import styles from './Weather.module.css';
 const ICON_BASE_URL = 'https://www.accuweather.com/images/weathericons/';
 
 export default function Weather() {
+  const dispatch = useDispatch();
+  const { userLocation, getLocation, userLocationError } = useGeolocation();
   const [isLoading, setIsLoading] = useState(false);
   const error = useSelector(selectWeatherError);
-  const dispatch = useDispatch();
   const { text, temp, iconCode } = useSelector(selectCurrentWeather);
   const { key: locationKey, cityName } = useSelector(selectLocation);
   const forecast = useSelector(selectForecast);
   const favorites = useSelector(selectFavorites);
   const isMetric = useSelector(selectUnitSystem);
-  const { userLocation, getLocation, userLocationError } = useGeolocation();
 
   const isFavorite = !!favorites.find((fav) => fav.key === locationKey);
 
@@ -64,12 +64,9 @@ export default function Weather() {
       </div>
     );
 
-  if (error) {
-    return <ErrorModal errorMessage={error} />;
-  }
-
   return (
     <section className={styles.container}>
+      {error && <ErrorModal errorMessage={error} />}
       <Search />
       <Button
         variant="outlined"
@@ -80,7 +77,7 @@ export default function Weather() {
         {userLocationError || 'Get Location Weather'}
       </Button>
       <CurrentWeatherCard
-        name={cityName}
+        name={text ? cityName : 'Data is not available'}
         isFavorite={isFavorite}
         toggleFavorite={toggleFavorite}
         text={text}
@@ -91,9 +88,7 @@ export default function Weather() {
           src: iconCode ? `${ICON_BASE_URL}${iconCode}.svg` : ''
         }}
       />
-      {forecast.forecastDays && (
-        <Forecast forecast={forecast} iconBaseUrl={ICON_BASE_URL} />
-      )}
+      <Forecast forecast={forecast} iconBaseUrl={ICON_BASE_URL} />
     </section>
   );
 }

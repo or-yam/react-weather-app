@@ -26,17 +26,22 @@ export default function CurrentWeatherCard({
           onClick={toggleFavorite}
           aria-label="like"
           color={isFavorite ? 'primary' : 'default'}
+          disabled={!text}
         >
           <FavoriteIcon />
         </IconButton>
       </div>
-      <h2 className={styles.title}>{text}</h2>
-      <div className={styles.infoContainer}>
-        <img className={styles.weatherIcon} src={icon.src} alt={icon.alt} />
-        <p className={styles.temp}>
-          {temp} {isMetric ? <span>&#8451;</span> : <span>&#8457;</span>}
-        </p>
-      </div>
+      {text && (
+        <>
+          <h2 className={styles.title}>{text}</h2>
+          <div className={styles.infoContainer}>
+            <img className={styles.weatherIcon} src={icon.src} alt={icon.alt} />
+            <p className={styles.temp}>
+              {temp} {isMetric ? <span>&#8451;</span> : <span>&#8457;</span>}
+            </p>
+          </div>
+        </>
+      )}
     </div>
   );
 }
