@@ -23,7 +23,7 @@ export const getForecast = createAsyncThunk(
 
 const setForecast = (state, { payload: forecast }) => {
   forecast.error
-    ? (state.errorMessage = forecast.error)
+    ? (state.errorMessage = `${forecast.error}, could not fetch forecast`)
     : (state.forecast = {
         headLine: forecast.Headline.Text,
         forecastDays: forecast.DailyForecasts.map(
@@ -43,7 +43,7 @@ const setForecast = (state, { payload: forecast }) => {
 
 const setCurrentWeather = (state, { payload: weather }) => {
   weather.error
-    ? (state.errorMessage = weather.error)
+    ? (state.errorMessage = `${weather.error}, could not fetch weather`)
     : (state.currentWeather = {
         text: weather.WeatherText,
         iconCode: weather.WeatherIcon,

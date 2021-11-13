@@ -19,7 +19,7 @@ export const getUserCity = createAsyncThunk(
 
 const setUserCity = (state, { payload }) => {
   payload.error
-    ? (state.errorMessage = payload.error)
+    ? (state.errorMessage = `${payload.error}, Can not load location data`)
     : (state.userLocation = {
         ...state.userLocation,
         key: payload.Key,
