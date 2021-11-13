@@ -27,8 +27,11 @@ export default function Search() {
   };
 
   const onInputChange = (event) => {
+    if (!event?.target.value) {
+      return;
+    }
     // Validate only english characters
-    if (event?.target.value.match(NON_ENGLISH_CHARS_REGEX)) {
+    if (event?.target.value?.match(NON_ENGLISH_CHARS_REGEX)) {
       setInputError(true);
       return;
     }
