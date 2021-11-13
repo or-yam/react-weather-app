@@ -7,7 +7,7 @@ import styles from './Forecast.module.css';
 export default function Forecast({ forecast, iconBaseUrl }) {
   const isDarkTheme = useSelector(selectTheme);
   const { forecastDays, headLine } = forecast;
-  const { isMetric } = forecastDays ? forecastDays[0].temp : true;
+  const { isMetric } = (forecastDays && forecastDays[0].temp) || {};
 
   const weekDay = (date) => new Date(date).toDateString().split(' ')[0];
 
