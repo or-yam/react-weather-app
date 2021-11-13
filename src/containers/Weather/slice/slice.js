@@ -30,7 +30,7 @@ const setForecast = (state, { payload: forecast }) => {
           ({ Date: date, Temperature: temp, Day: day, Night: night }) => ({
             date,
             temp: {
-              isMetric: temp.Unit === 'C',
+              isMetric: temp.Minimum.Unit === 'C',
               min: temp.Minimum.Value,
               max: temp.Maximum.Value
             },
