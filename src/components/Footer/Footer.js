@@ -9,7 +9,7 @@ function Footer() {
   return (
     <footer className={`${styles.footer} ${isDarkTheme && styles.dark}`}>
       <span>
-        Copyright © &nbsp;
+        Created by{' '}
         <a color="inherit" href="https://github.com/or-yam/">
           ORYAM
         </a>
