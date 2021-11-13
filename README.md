@@ -46,3 +46,7 @@ export const fetchGeoLocation = ({ lat, lon }) =>
 - Weather data from [AccuWeather api](https://developer.accuweather.com/)
 - Geolocation [API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
 - Deployed on [Vercel](https://vercel.com/)
+
+## Planing schema
+
+![Planing Schema ](./palning-schema.png)
