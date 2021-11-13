@@ -14,7 +14,6 @@ import { selectTheme } from '../../containers/App/slice/selectors';
 const DEBOUNCE_TIME = 600;
 
 export default function Search() {
-  // TODO use local state instead of redux
   const dispatch = useDispatch();
   const [input, setInput] = useState('');
   const isDarkTheme = useSelector(selectTheme);
@@ -34,7 +33,7 @@ export default function Search() {
     const timer = setTimeout(() => {
       input && dispatch(getAutoCompleteCitiesList(input));
     }, DEBOUNCE_TIME);
-    
+
     return () => clearTimeout(timer);
   }, [input]);
 

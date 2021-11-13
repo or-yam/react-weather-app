@@ -26,6 +26,7 @@ export default function FavoriteCard({
   const onRemove = () => {
     removeCity({ key: cityKey });
   };
+
   return (
     <li className={`${styles.container} ${isDarkTheme ? styles.dark : ''}`}>
       <div className={styles.cityContainer}>
@@ -69,7 +70,6 @@ FavoriteCard.propTypes = {
   name: PropTypes.string.isRequired,
   removeCity: PropTypes.func.isRequired,
   text: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
   temp: PropTypes.number,
   icon: PropTypes.shape({ src: PropTypes.string, alt: PropTypes.string }),
   setCurrentLocation: PropTypes.func.isRequired,
