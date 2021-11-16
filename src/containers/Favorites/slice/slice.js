@@ -14,7 +14,9 @@ export const getFavoritesWeather = createAsyncThunk(
   async (favorites) => {
     if (!favorites.length) return [];
     const favoritesWeather = await Promise.all(
-      favorites.map(({ key }) => api.fetchCurrentWeather(key))
+      favorites
+        .filter(({ weather }) => !weather)
+        .map(({ key }) => api.fetchCurrentWeather(key))
     );
     return favoritesWeather;
   }
