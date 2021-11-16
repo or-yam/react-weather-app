@@ -12,7 +12,7 @@ import { setLocation } from '../../containers/Weather/slice/slice';
 import { selectTheme } from '../../containers/App/slice/selectors';
 
 const DEBOUNCE_TIME = 600;
-const NON_ENGLISH_CHARS_REGEX = /[^a-z0-9_.,-]/i;
+const NON_ENGLISH_CHARS_REGEX = /[^a-z0-9_.,-\s]/i;
 
 export default function Search() {
   const dispatch = useDispatch();
