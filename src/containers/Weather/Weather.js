@@ -38,8 +38,12 @@ export default function Weather() {
   const getWeatherAndForecast = async () => {
     setIsLoading(true);
     !text && (await dispatch(getCurrentWeather(locationKey)));
-    !forecast.headLine &&
-      (await dispatch(getForecast({ locationKey, isMetric })));
+    if (
+      !forecast.forecastDays ||
+      forecast?.forecastDays[0].temp.isMetric !== isMetric
+    ) {
+      await dispatch(getForecast({ locationKey, isMetric }));
+    }
     setIsLoading(false);
   };
 
