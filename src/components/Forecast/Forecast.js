@@ -11,8 +11,27 @@ export default function Forecast({ forecast, iconBaseUrl }) {
 
   const weekDay = (date) => new Date(date).toDateString().split(' ')[0];
 
-  const renderUnits = () =>
+  const renderUnitsSymbol = () =>
     isMetric ? <span>&#8451;</span> : <span>&#8457;</span>;
+
+  const renderDay = ({ date, temp, iconsCode, text }) => (
+    <li className={styles.listItem} key={date}>
+      <h3>{weekDay(date)}</h3>
+      <p>
+        {temp.max} - {temp.min} {renderUnitsSymbol()}
+      </p>
+      <div className={styles.iconsContainer}>
+        <img
+          src={`${iconBaseUrl}${iconsCode?.day}.svg`}
+          alt={`${text}-day-icon`}
+        />
+        <img
+          src={`${iconBaseUrl}${iconsCode?.night}.svg`}
+          alt={`${text}-night-icon`}
+        />
+      </div>
+    </li>
+  );
 
   return (
     <div className={`${styles.container} ${isDarkTheme ? styles.dark : ''}`}>
@@ -21,24 +40,7 @@ export default function Forecast({ forecast, iconBaseUrl }) {
         {!forecastDays ? (
           <p>No forecast available</p>
         ) : (
-          forecastDays.map(({ date, temp, iconsCode, text }) => (
-            <li className={styles.listItem} key={date}>
-              <h3>{weekDay(date)}</h3>
-              <p>
-                {temp.max} - {temp.min} {renderUnits()}
-              </p>
-              <div className={styles.iconsContainer}>
-                <img
-                  src={`${iconBaseUrl}${iconsCode?.day}.svg`}
-                  alt={`${text}-day-icon`}
-                />
-                <img
-                  src={`${iconBaseUrl}${iconsCode?.night}.svg`}
-                  alt={`${text}-night-icon`}
-                />
-              </div>
-            </li>
-          ))
+          forecastDays.map(renderDay)
         )}
       </ul>
     </div>
