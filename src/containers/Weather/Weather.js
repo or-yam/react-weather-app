@@ -52,6 +52,7 @@ export default function Weather() {
 
   const setUserLocationWeather = () => {
     getLocation();
+    if (!userLocation.key || !userLocation.cityName) return;
     dispatch(
       setLocation({ key: userLocation.key, cityName: userLocation.cityName })
     );
