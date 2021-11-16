@@ -35,15 +35,16 @@ export default function Weather() {
 
   const isFavorite = !!favorites.find((fav) => fav.key === locationKey);
 
+  const getWeatherAndForecast = async () => {
+    setIsLoading(true);
+    !text && (await dispatch(getCurrentWeather(locationKey)));
+    !forecast.headLine &&
+      (await dispatch(getForecast({ locationKey, isMetric })));
+    setIsLoading(false);
+  };
+
   useEffect(() => {
-    (async () => {
-      setIsLoading(true);
-      await Promise.all([
-        dispatch(getCurrentWeather(locationKey)),
-        dispatch(getForecast({ locationKey, isMetric }))
-      ]);
-      setIsLoading(false);
-    })();
+    getWeatherAndForecast();
   }, [locationKey, isMetric]);
 
   const toggleFavorite = () => {
