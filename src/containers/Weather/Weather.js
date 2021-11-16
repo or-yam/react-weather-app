@@ -43,14 +43,6 @@ export default function Weather() {
     setIsLoading(false);
   };
 
-  useEffect(() => {
-    getWeatherAndForecast();
-  }, [locationKey, isMetric]);
-
-  const toggleFavorite = () => {
-    dispatch(actions.toggleFavorite({ key: locationKey, cityName }));
-  };
-
   const setUserLocationWeather = () => {
     getLocation();
     if (!userLocation.key || !userLocation.cityName) return;
@@ -58,6 +50,14 @@ export default function Weather() {
       setLocation({ key: userLocation.key, cityName: userLocation.cityName })
     );
   };
+
+  const toggleFavorite = () => {
+    dispatch(actions.toggleFavorite({ key: locationKey, cityName }));
+  };
+
+  useEffect(() => {
+    getWeatherAndForecast();
+  }, [locationKey, isMetric]);
 
   if (isLoading)
     return (
