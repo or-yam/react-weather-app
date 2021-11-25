@@ -19,3 +19,13 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+/*
+ TODO:
+ add a 404 page
+ Handle errors in a better way (RTK query?)
+ Improve slice dividing (less slices, share data better)
+ Auto-complete debounce - avoid race conditions by using abort call with axios
+ Auto-complete state should't be in redux
+ Use context for App state
+*/
