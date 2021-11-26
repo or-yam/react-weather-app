@@ -28,4 +28,7 @@ ReactDOM.render(
  Auto-complete debounce - avoid race conditions by using abort call with axios
  Auto-complete state should't be in redux
  Use context for App state
-*/
+ Replace to a free weather api
+ Replace to a free auto complete api
+ Update styles to look and feel like google weather app
+ */
