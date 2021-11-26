@@ -22,6 +22,7 @@ ReactDOM.render(
 
 /*
  TODO:
+ Remove bitbucket from origins
  add a 404 page
  Handle errors in a better way (RTK query?)
  Improve slice dividing (less slices, share data better)
