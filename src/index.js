@@ -32,4 +32,5 @@ ReactDOM.render(
  Replace to a free weather api
  Replace to a free auto complete api
  Update styles to look and feel like google weather app
+ Add useMemo and useCallback where neede
  */
