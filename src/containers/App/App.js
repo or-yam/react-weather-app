@@ -6,6 +6,7 @@ import { selectTheme } from './slice/selectors';
 import { getSettingsFromLocalStorage } from './slice/slice';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import NotFound from '../../components/NotFound/NotFound';
 import Weather from '../Weather/Weather';
 import Favorites from '../Favorites/Favorites';
 import Settings from '../Settings/Settings';
@@ -25,6 +26,7 @@ function App() {
       <Header />
       <main className={isDarkTheme ? styles.dark : ''}>
         <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Weather />} />
           <Route path="favorites" element={<Favorites />} />
           <Route path="settings" element={<Settings />} />
