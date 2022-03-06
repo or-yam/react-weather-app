@@ -1,8 +1,6 @@
 # Weather App 🌦️
 
-## Live app [here](https://weatherapp-liard-five.vercel.app/)
-
-## Repo [Link](https://bitbucket.org/oryamne/weather-app/src/main/)
+## Live app [here](https://weather.oryam.me/)
 
 ## Capabilities
 
